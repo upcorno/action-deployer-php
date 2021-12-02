@@ -21,15 +21,13 @@ host('test.youshangjiao.com.cn')
 host('youshangjiao.com.cn')
     ->user($user)
     ->set('http_user', $user)
+    ->port(3222)
     ->set('stage', 'prod')
     ->set('branch', 'prod');
 
 desc('Upload code');
 task('deploy:upload_code', function () {
-    $sourcePath = 'dist/';
-    if (get('project_name') === 'www') {
-        $sourcePath = './';
-    }
+    $sourcePath = './';
     upload($sourcePath, "{{release_path}}/");
 });
 

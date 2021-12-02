@@ -23,6 +23,7 @@ RUN curl -L https://deployer.org/releases/v$DEPLOYER_VERSION/deployer.phar > /us
     && chmod +x /usr/local/bin/deployer
 
 COPY entrypoint.sh /entrypoint.sh
+COPY deploy_web.php /deploy_web.php
 
 RUN chmod +x /entrypoint.sh
 
