@@ -1,7 +1,7 @@
 FROM php:7.4-cli-alpine
 
-LABEL "repository" = "https://github.com/musps/action-deployer-php"
-LABEL "homepage" = "https://github.com/musps/action-deployer-php"
+LABEL "repository" = "https://github.com/upcorno/action-deployer-php"
+LABEL "homepage" = "https://github.com/upcorno/action-deployer-php"
 
 LABEL "com.github.actions.name"="Action - Deployer php"
 LABEL "com.github.actions.description"="Use your Deployer PHP script with your github action workflow."
