@@ -27,7 +27,10 @@ host('youshangjiao.com.cn')
 
 desc('Upload code');
 task('deploy:upload_code', function () {
-    $sourcePath = './';
+    $sourcePath = 'dist/';
+    if (get('project_name') === 'www') {
+        $sourcePath = './';
+    }
     upload($sourcePath, "{{release_path}}/");
 });
 
