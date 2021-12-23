@@ -31,7 +31,18 @@ task('deploy:upload_code', function () {
     if (get('project_name') === 'www') {
         $sourcePath = './';
     }
-    upload($sourcePath, "{{release_path}}/");
+    $count = 0;
+    maodian:
+    try {
+        $count++;
+        upload($sourcePath, "{{release_path}}/");
+    } catch (\Throwable $t) {
+        if ($count < 5) {
+            goto maodian;
+        } else {
+            throw $t;
+        }
+    }
 });
 
 if (getenv('STAGE') === 'prod') {
