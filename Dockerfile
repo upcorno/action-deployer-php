@@ -14,7 +14,8 @@ RUN apk update --no-cache \
     && apk add --no-cache \
     bash \
     openssh-client \
-    rsync
+    rsync \
+    git
 
 # Change default shell to bash (needed for conveniently adding an ssh key)
 RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
