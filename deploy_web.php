@@ -34,6 +34,7 @@ task('deploy:upload_code', function () {
     $count = 0;
     maodian:
     try {
+        runLocally('pwd & ls -al');
         $count++;
         upload($sourcePath, "{{release_path}}/");
     } catch (\Throwable $t) {
