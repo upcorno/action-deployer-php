@@ -38,7 +38,7 @@ task('deploy:upload_code', function () {
         $count++;
         upload($sourcePath, "{{release_path}}/");
     } catch (\Throwable $t) {
-        if ($count < 5) {
+        if ($count < 10) {
             sleep(3);
             goto maodian;
         } else {
