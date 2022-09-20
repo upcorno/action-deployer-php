@@ -9,6 +9,7 @@ set('deploy_path', $deployPath);
 set('allow_anonymous_stats', false);
 set('default_stage', 'test');
 set('deployer', 'deployer2');
+set('keep_releases', 10);
 $user = 'deployer2';
 
 host('test.youshangjiao.com.cn')
