@@ -67,8 +67,10 @@ if (getenv('STAGE') === 'prod') {
 
 desc('测试环境触发版本变更记录');
 task('deploy:notify_change', function () {
-    if (getenv('STAGE') === 'test') {    
-    runLocally('curl https://composite.test.youshangjiao.com.cn:9443/c3/change/report?target=front_end_version-{{project_name}}-'.time());
+    if (getenv('STAGE') === 'test') {
+        $projectName = get('project_name');
+        $tempProjectName = str_replace('-', '_', $projectName);
+        runLocally("curl https://composite.test.youshangjiao.com.cn:9443/c3/change/report?target=front_end_version-$tempProjectName-" . time());
     }
 });
 
