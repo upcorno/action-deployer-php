@@ -65,6 +65,13 @@ if (getenv('STAGE') === 'prod') {
     });
 }
 
+desc('测试环境触发版本变更记录');
+task('deploy:notify_change', function () {
+    if (getenv('STAGE') === 'test') {    
+    runLocally('curl https://composite.test.youshangjiao.com.cn:9443/c3/change/report?target=front_end_version-{{project_name}}-'.time())
+    }
+});
+
 desc('Deploy project');
 task('deploy', [
     'deploy:info',
@@ -76,6 +83,7 @@ task('deploy', [
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
+    'deploy:notify_change'
 ]);
 after('deploy', 'success');
 after('deploy:failed', 'deploy:unlock');
