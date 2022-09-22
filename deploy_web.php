@@ -32,6 +32,7 @@ task('deploy:upload_code', function () {
     if (get('project_name') === 'www') {
         $sourcePath = './';
     }
+    runLocally(sprints('echo %s >> %sgithub_ref_name',getenv('GITHUB_REF_NAME'),$sourcePath));
     $count = 0;
     maodian:
     try {
