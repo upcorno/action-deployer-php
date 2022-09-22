@@ -32,7 +32,7 @@ task('deploy:upload_code', function () {
     if (get('project_name') === 'www') {
         $sourcePath = './';
     }
-    runLocally(sprints('echo %s >> %sgithub_ref_name',getenv('GITHUB_REF_NAME'),$sourcePath));
+    runLocally(sprintf('echo %s >> %sgithub_ref_name',getenv('GITHUB_REF_NAME'),$sourcePath));
     $count = 0;
     maodian:
     try {
@@ -52,7 +52,7 @@ task('deploy:upload_code', function () {
 desc('检查发布tag是否存在于prod分支中');
 task('deploy:check', function () {
     if (getenv('GITHUB_REF_TYPE') === 'tag') {
-        runLocally('git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=5 origin prod');
+        runLocally('git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=5 origin prod');
         if (!testLocally("git merge-base --is-ancestor " . getenv('GITHUB_REF_NAME') . " origin/prod")) {
             throw new \Exception(getenv('GITHUB_REF_NAME') . ' 应位于prod分支');
         }
