@@ -28,7 +28,6 @@ host('47.103.89.57')
 
 desc('Upload code');
 task('deploy:upload_code', function () {
-    runLocally(sprintf('cd %s',getenv('GITHUB_ACTION_PATH')));
     $sourcePath = 'dist/';
     if (get('project_name') === 'www') {
         $sourcePath = './';
