@@ -27,5 +27,4 @@ ssh-add /tmp/id_rsa
 
 deployer --version
 git config --global --add safe.directory /github/workspace
-cat /etc/passwd
 deployer -f=/deploy_web.php deploy $STAGE -vvv
