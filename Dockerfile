@@ -27,5 +27,8 @@ COPY entrypoint.sh /entrypoint.sh
 COPY deploy_web.php /deploy_web.php
 
 RUN chmod +x /entrypoint.sh
+RUN groupadd -g 1000 node \
+    && useradd -u 1000 -g 1000 -M -s /usr/sbin/nologin node
+USER vscode
 
 ENTRYPOINT ["/entrypoint.sh"]
