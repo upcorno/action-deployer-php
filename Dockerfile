@@ -1,4 +1,4 @@
-FROM php:7.4-cli-alpine
+FROM php:7.4-cli
 
 LABEL "repository" = "https://github.com/upcorno/action-deployer-php"
 LABEL "homepage" = "https://github.com/upcorno/action-deployer-php"
@@ -10,12 +10,9 @@ LABEL "com.github.actions.color"="yellow"
 
 ENV DEPLOYER_VERSION=6.8.0
 
-RUN apk update --no-cache \
-    && apk add --no-cache \
-    bash \
-    openssh-client \
-    rsync \
-    git
+
+RUN sed -i "s@http://\(deb\|security\).debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list
+RUN apt-get update && apt-get install -y bash openssh-client rsync git
 
 # Change default shell to bash (needed for conveniently adding an ssh key)
 RUN sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
