@@ -22,8 +22,8 @@ mkdir -p /github/home/.ssh
 
 eval $(ssh-agent -s)
 
-echo 'Host *' >> ~/.ssh/config
-echo 'StrictHostKeyChecking no' >> ~/.ssh/config
+echo -e 'Host *' >> ~/.ssh/config
+echo -e 'StrictHostKeyChecking no' >> ~/.ssh/config
 echo "$SSH_PRIVATE_KEY" | tr -d '\r' >/tmp/id_rsa
 chmod 600 /tmp/id_rsa
 ssh-add /tmp/id_rsa
