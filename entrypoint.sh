@@ -16,7 +16,7 @@ else
   exit 1
 fi
 
-#mkdir -p /github/home/.ssh
+mkdir -p /github/home/.ssh
 
 eval $(ssh-agent -s)
 
