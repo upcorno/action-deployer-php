@@ -9,6 +9,8 @@ fi
 
 if [ "$GITHUB_REF_NAME" = "test" ]; then
   export STAGE=test
+elif [ "$GITHUB_REF_NAME" = "tmp" ]; then
+  export STAGE=test
 elif [[ "$GITHUB_REF_NAME" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
   export STAGE=prod
 else
