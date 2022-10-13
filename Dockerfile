@@ -24,6 +24,7 @@ COPY entrypoint.sh /entrypoint.sh
 COPY deploy_web.php /deploy_web.php
 
 RUN chmod +x /entrypoint.sh
+RUN echo -e "StrictHostKeyChecking no" >>/etc/ssh/ssh_config
 RUN groupadd -g 1000 node \
     && useradd -u 1000 -g 1000 -s /bin/bash node
 USER node
