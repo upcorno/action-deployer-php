@@ -25,6 +25,6 @@ COPY deploy_web.php /deploy_web.php
 
 RUN chmod +x /entrypoint.sh
 RUN groupadd -g 1000 node \
-    && useradd -u 1000 -g 1000 -m -d /home/node -s /bin/bash node
+    && useradd -u 1000 -g 1000 -s /bin/bash node
 USER node
 ENTRYPOINT ["/entrypoint.sh"]
