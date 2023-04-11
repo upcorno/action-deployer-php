@@ -90,3 +90,4 @@ task('deploy', [
 ]);
 after('deploy', 'success');
 after('deploy:failed', 'deploy:unlock');
+after('deploy', 'deploy:unlock');
