@@ -74,10 +74,6 @@ task('deploy:notify_change', function () {
         runLocally("curl https://composite.test.youshangjiao.com.cn:9443/c3/change/report?target=front_end_version-$tempProjectName-" . time());
     }
 });
-
-after('deploy', 'success');
-after('deploy:failed', 'deploy:unlock');
-after('deploy', 'deploy:unlock');
 desc('Deploy project');
 task('deploy', [
     'deploy:info',
@@ -91,3 +87,6 @@ task('deploy', [
     'cleanup',
     'deploy:notify_change'
 ]);
+
+after('deploy', 'success');
+after('deploy:failed', 'deploy:unlock');
