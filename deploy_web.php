@@ -75,6 +75,9 @@ task('deploy:notify_change', function () {
     }
 });
 
+after('deploy', 'success');
+after('deploy:failed', 'deploy:unlock');
+after('deploy', 'deploy:unlock');
 desc('Deploy project');
 task('deploy', [
     'deploy:info',
@@ -88,6 +91,3 @@ task('deploy', [
     'cleanup',
     'deploy:notify_change'
 ]);
-after('deploy', 'success');
-after('deploy:failed', 'deploy:unlock');
-after('deploy', 'deploy:unlock');
