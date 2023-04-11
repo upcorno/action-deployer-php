@@ -31,6 +31,7 @@ ssh-add /tmp/id_rsa
 
 deployer --version
 git config --global --add safe.directory /github/workspace
+trap " deployer -f=/deploy_web.php deploy:unlock $STAGE -vvv; exit" INT TERM EXIT
 deployer -f=/deploy_web.php deploy $STAGE -vvv
-deployer -f=/deploy_web.php deploy:unlock $STAGE -vvv
+trap - INT TERM EXIT
 
