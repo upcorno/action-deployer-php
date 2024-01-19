@@ -81,7 +81,7 @@ task('deploy:preview', function () {
         run("ln -snf $(readlink current) preview");
     }
 });
-before('deploy:cleanup', 'deploy:preview');
+before('cleanup', 'deploy:preview');
 
 desc('Deploy project');
 task('deploy', [
@@ -93,7 +93,7 @@ task('deploy', [
     'deploy:upload_code',
     'deploy:symlink',
     'deploy:unlock',
-    'deploy:cleanup',
+    'cleanup',
     'deploy:notify_change'
 ]);
 
