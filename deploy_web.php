@@ -78,7 +78,7 @@ task('deploy:notify_change', function () {
 desc('生产环境预览链接');
 task('deploy:preview', function () {
     if (getenv('STAGE') === 'prod') {
-        run("ln -snf $(readlink current) preview");
+        run("cd {{deploy_path}} && ln -snf $(readlink release) preview");
     }
 });
 before('cleanup', 'deploy:preview');
