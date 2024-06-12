@@ -19,7 +19,7 @@ host('test.youshangjiao.com.cn')
     ->set('stage', 'test')
     ->set('branch', 'test');
 
-host('47.103.89.57')
+host('youshangjiao.com.cn')
     ->user($user)
     ->set('http_user', $user)
     ->port(3222)
